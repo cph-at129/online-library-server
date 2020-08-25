@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.VSCodeCounter/
+package-lock.json
+tslint_report.json
+*.js
+*.js.map
+.idea
