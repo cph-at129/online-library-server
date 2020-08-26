@@ -7,12 +7,13 @@ import IResponse from '../interfaces/IResponse';
 const JWT_KEY = 'WinterIsComingGOT2019';
 
 export const generateToken = (user: IUser) => {
-    return jwt.sign({username: user.username}, JWT_KEY, {
+    return jwt.sign({username: user.username, role: user.role}, JWT_KEY, {
         expiresIn: '3h' // expires in 3 hours
    });
 }
 
 export const verifyToken = (req: Request, res: Response, next: any) => {
+    console.log(req.body)
     if (!req.body.token) {
         return false;
     }

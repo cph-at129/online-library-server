@@ -17,10 +17,10 @@ router.route('/books/create')
     .post(createBook);
 
 router.route('/books/getBooks')
-    .get(getBooks);
+    .post(getBooks);
 
 router.route('/books/getBook')
-    .get(getBook);
+    .post(getBook);
 
 router.route('/books/updateBook')
     .post(updateBook);

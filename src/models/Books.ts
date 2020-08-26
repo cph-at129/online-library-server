@@ -25,8 +25,8 @@ Book.init(
       branch_of_library: {
         type: DataTypes.INTEGER
       },
-      media_id: {
-        type: DataTypes.INTEGER
+      image: {
+        type: DataTypes.TEXT
       },
       quantity: {
         type: DataTypes.INTEGER

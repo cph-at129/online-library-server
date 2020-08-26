@@ -12,12 +12,12 @@ const router = Router();
 canAccess(router);
 
 router.route('/roles/getRoles')
-    .get(getRoles);
+    .post(getRoles);
 
 router.route('/categories/getBookCategories')
-    .get(getBookCategories);
+    .post(getBookCategories);
 
 router.route('/branches/getBranchesOfLibrary')
-    .get(getBranchesOfLibrary);
+    .post(getBranchesOfLibrary);
 
 export default router;

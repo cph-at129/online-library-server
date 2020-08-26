@@ -11,16 +11,16 @@ import {
 
 const router = Router();
 
-// canAccess(router);
+canAccess(router);
 
 router.route('/users/create')
     .post(createUser);
 
 router.route('/users/getUsers')
-    .get(getUsers);
+    .post(getUsers);
 
 router.route('/users/getUser')
-    .get(getUser);
+    .post(getUser);
 
 router.route('/users/updateUser')
     .post(updateUser);

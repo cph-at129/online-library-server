@@ -54,8 +54,7 @@ export const createUser = async (req: Request, res: Response): Promise<Response>
 
 export const getUsers = async (req: Request, res: Response): Promise<Response> => {
     try {
-        const users = await User.findAll<User>();
-
+        const users = await User.findAll<User>({ attributes: {exclude: ['password']} });
         const response = {
             status: 1,
             status_txt: 'OK',
@@ -78,8 +77,8 @@ export const getUsers = async (req: Request, res: Response): Promise<Response> =
 
 export const getUser = async (req: Request, res: Response): Promise<Response> => {
     try {
-        const user = await User.findAll<User>({ where: { id: req.body.id }, plain: true, raw: true});
-
+        const user: any = await User.findAll<User>({ where: { id: req.body.id }, plain: true, raw: true});
+        delete user.password;
         const response = {
             status: 1,
             status_txt: 'OK',
