@@ -14,8 +14,6 @@ export const createUser = async (req: Request, res: Response): Promise<Response>
             data: {}
         };
 
-        console.log(req.body)
-
         const user = await User.findAll<User>({ where: { username: body.username }, plain: true, raw: true});
         if (user) {
             return res.json(response);
@@ -27,8 +25,7 @@ export const createUser = async (req: Request, res: Response): Promise<Response>
             body.role = Roles.reader.id;
         }
 
-        body.branch_of_library = Number(body.branch_of_library)
-        body.role = Roles.admin.id
+        body.branch_of_library = Number(body.branch_of_library);
 
         const newUser: any = await User.create<User>(body);
         response = {
@@ -113,8 +110,7 @@ export const updateUser = async (req: Request, res: Response): Promise<Response>
         const result = await User.update<User>(body, { where: {id: body.id} });
 
         if (result) {
-            const updatedUser: any = await User.findAll<User>({ where: { id: body.id }, plain: true, raw: true});
-            delete updatedUser.password;
+            const updatedUser: any = await User.findAll<User>({ where: { id: body.id }, plain: true, raw: true, attributes: {exclude: ['password']}});
             response = {
                 status: 1,
                 status_txt: 'User updated successful!',
@@ -144,6 +140,41 @@ export const deleteUser = async (req: Request, res: Response): Promise<Response>
             status_txt: 'OK',
             data: user
         };
+
+        return res.json(response);
+    }
+    catch (e) {
+        console.log(e);
+        const response: IResponse = {
+            status: 0,
+            status_txt: 'An error occured',
+            data: []
+        };
+
+        return res.json(response);
+    }
+}
+
+export const approveUser = async (req: Request, res: Response): Promise<Response> => {
+    try {
+        const body = req.body;
+
+        let response: IResponse = {
+            status: 0,
+            status_txt: 'User approved unsuccessful!',
+            data: []
+        };
+
+        const result = await User.update<User>({ approved: true }, { where: {id: body.id} });
+
+        if (result) {
+            const updatedUser: any = await User.findAll<User>({ where: { id: body.id }, plain: true, raw: true, attributes: {exclude: ['password']}});
+            response = {
+                status: 1,
+                status_txt: 'User approved successful!',
+                data: updatedUser
+            };
+        }
 
         return res.json(response);
     }

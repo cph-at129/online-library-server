@@ -6,7 +6,8 @@ import {
     getUsers,
     getUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    approveUser
 } from '../controllers/UserController';
 
 const router = Router();
@@ -27,5 +28,8 @@ router.route('/users/updateUser')
 
 router.route('/users/deleteUser')
     .post(deleteUser);
+
+router.route('/users/approveUser')
+    .post(approveUser);
 
 export default router;
