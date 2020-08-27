@@ -31,7 +31,14 @@ export const createBook = async (req: Request, res: Response): Promise<Response>
 
 export const getBooks = async (req: Request, res: Response): Promise<Response> => {
     try {
-        const books = await Book.findAll<Book>({ where: { branch_of_library: req.body.branch_of_library } });
+        const body = req.body;
+        let books = [];
+
+        if (body.branch_of_library) {
+            books =  await Book.findAll<Book>({ where: { branch_of_library: req.body.branch_of_library } });
+        } else {
+            books = await Book.findAll<Book>();
+        }
 
         const response = {
             status: 1,
