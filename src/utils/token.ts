@@ -35,7 +35,7 @@ export const canAccess = (router: Router) => {
         } else {
             const response = {
                 status: -1,
-                status_txt: 'Unauthorized',
+                status_txt: 'Неупълномощен',
                 data: []
             } as IResponse;
 
