@@ -10,7 +10,7 @@ export const createBook = async (req: Request, res: Response): Promise<Response>
         const newBook: any = await Book.create<Book>(body);
         const response: IResponse = {
             status: 1,
-            status_txt: 'Book created!',
+            status_txt: 'Книгата е създадена!',
             data: {
                 title: newBook.title
             }
@@ -21,7 +21,7 @@ export const createBook = async (req: Request, res: Response): Promise<Response>
         console.log(e)
         const response: IResponse = {
             status: 0,
-            status_txt: 'An error occured',
+            status_txt: 'Възникна грешка',
             data: []
         };
 
@@ -52,7 +52,7 @@ export const getBooks = async (req: Request, res: Response): Promise<Response> =
         console.log(e);
         const response: IResponse = {
             status: 0,
-            status_txt: 'An error occured',
+            status_txt: 'Възникна грешка',
             data: []
         };
 
@@ -77,7 +77,7 @@ export const getBook = async (req: Request, res: Response): Promise<Response> =>
         console.log(e);
         const response: IResponse = {
             status: 0,
-            status_txt: 'An error occured',
+            status_txt: 'Възникна грешка',
             data: []
         };
 
@@ -91,7 +91,7 @@ export const updateBook = async (req: Request, res: Response): Promise<Response>
 
         let response: IResponse = {
             status: 0,
-            status_txt: 'Book update unsuccessful!',
+            status_txt: 'Успешна актуализация на книга!',
             data: []
         };
 
@@ -101,7 +101,7 @@ export const updateBook = async (req: Request, res: Response): Promise<Response>
             const updatedBook: any = await Book.findAll<Book>({ where: { id: body.id }, plain: true, raw: true});
             response = {
                 status: 1,
-                status_txt: 'Book updated successful!',
+                status_txt: 'Успешна актуализация на книга!',
                 data: updatedBook
             };
         }
@@ -112,7 +112,7 @@ export const updateBook = async (req: Request, res: Response): Promise<Response>
         console.log(e);
         const response: IResponse = {
             status: 0,
-            status_txt: 'An error occured',
+            status_txt: 'Възникна грешка',
             data: []
         };
 
@@ -135,7 +135,7 @@ export const deleteBook = async (req: Request, res: Response): Promise<Response>
         console.log(e);
         const response: IResponse = {
             status: 0,
-            status_txt: 'An error occured',
+            status_txt: 'Възникна грешка!',
             data: []
         };
 
