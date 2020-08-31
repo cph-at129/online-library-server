@@ -30,7 +30,7 @@ export const login = async (req: Request, res: Response): Promise<Response | voi
                 if (user.approved) {
                     response = {
                         status: 1,
-                        status_txt: 'Login successful!',
+                        status_txt: 'Успешен вход!',
                         data: {
                             token,
                             userID: user.id
@@ -39,14 +39,14 @@ export const login = async (req: Request, res: Response): Promise<Response | voi
                 } else {
                     response = {
                         status: 0,
-                        status_txt: 'User not approved!',
+                        status_txt: 'Потребителят не е потвърден!',
                         data: {}
                     };
                 }
             } else {
                 response = {
                     status: 0,
-                    status_txt: 'Invalid password!',
+                    status_txt: 'Грешна парола!',
                     data: {}
                 };
             }
@@ -58,7 +58,7 @@ export const login = async (req: Request, res: Response): Promise<Response | voi
         console.log(e);
         const response:IResponse = {
             status: 0,
-            status_txt: 'An error occured',
+            status_txt: 'Възникна грешка!',
             data: []
         };
 
