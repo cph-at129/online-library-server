@@ -23,6 +23,8 @@ export const createUser = async (req: Request, res: Response): Promise<Response>
         body.password = hash;
         if (!body.role) {
             body.role = Roles.reader.id;
+        } else {
+            body.role = Number(body.role);
         }
 
         body.branch_of_library = Number(body.branch_of_library);

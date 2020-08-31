@@ -33,7 +33,7 @@ export const getBooks = async (req: Request, res: Response): Promise<Response> =
     try {
         const body = req.body;
         let books = [];
-
+console.log(body.branch_of_library)
         if (body.branch_of_library) {
             books =  await Book.findAll<Book>({ where: { branch_of_library: req.body.branch_of_library } });
         } else {
