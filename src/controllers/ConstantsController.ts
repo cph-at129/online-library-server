@@ -18,7 +18,7 @@ export const getRoles = async (req: Request, res: Response): Promise<Response> =
         console.log(e);
         const response: IResponse = {
             status: 0,
-            status_txt: 'An error occured',
+            status_txt: 'Възникна грешка',
             data: []
         };
 
@@ -40,7 +40,7 @@ export const getBookCategories = async (req: Request, res: Response): Promise<Re
         console.log(e);
         const response: IResponse = {
             status: 0,
-            status_txt: 'An error occured',
+            status_txt: 'Възникна грешка',
             data: []
         };
 
@@ -62,7 +62,7 @@ export const getBranchesOfLibrary = async (req: Request, res: Response): Promise
         console.log(e);
         const response: IResponse = {
             status: 0,
-            status_txt: 'An error occured',
+            status_txt: 'Възникна грешка',
             data: []
         };
 
