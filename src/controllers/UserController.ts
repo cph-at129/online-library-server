@@ -10,7 +10,7 @@ export const createUser = async (req: Request, res: Response): Promise<Response>
 
         let response: IResponse = {
             status: 0,
-            status_txt: 'Username already exists!',
+            status_txt: 'Потребителското име вече съществува!',
             data: {}
         };
 
@@ -30,7 +30,7 @@ export const createUser = async (req: Request, res: Response): Promise<Response>
         const newUser: any = await User.create<User>(body);
         response = {
             status: 1,
-            status_txt: 'User created!',
+            status_txt: 'Потребителско име създадено!',
             data: {
                 username: newUser.username
             }
@@ -41,7 +41,7 @@ export const createUser = async (req: Request, res: Response): Promise<Response>
         console.log(e)
         const response: IResponse = {
             status: 0,
-            status_txt: 'An error occured',
+            status_txt: 'Възникна грешка',
             data: []
         };
 
@@ -64,7 +64,7 @@ export const getUsers = async (req: Request, res: Response): Promise<Response> =
         console.log(e);
         const response: IResponse = {
             status: 0,
-            status_txt: 'An error occured',
+            status_txt: 'Възникна грешка',
             data: []
         };
 
@@ -89,7 +89,7 @@ export const getUser = async (req: Request, res: Response): Promise<Response> =>
         console.log(e);
         const response: IResponse = {
             status: 0,
-            status_txt: 'An error occured',
+            status_txt: 'Възникна грешка',
             data: []
         };
 
@@ -103,7 +103,7 @@ export const updateUser = async (req: Request, res: Response): Promise<Response>
 
         let response: IResponse = {
             status: 0,
-            status_txt: 'User update unsuccessful!',
+            status_txt: 'Успешна актуализация на потребител!',
             data: []
         };
 
@@ -113,7 +113,7 @@ export const updateUser = async (req: Request, res: Response): Promise<Response>
             const updatedUser: any = await User.findAll<User>({ where: { id: body.id }, plain: true, raw: true, attributes: {exclude: ['password']}});
             response = {
                 status: 1,
-                status_txt: 'User updated successful!',
+                status_txt: 'Успешна актуализация на потребител!',
                 data: updatedUser
             };
         }
@@ -124,7 +124,7 @@ export const updateUser = async (req: Request, res: Response): Promise<Response>
         console.log(e);
         const response: IResponse = {
             status: 0,
-            status_txt: 'An error occured',
+            status_txt: 'Възникна грешка',
             data: []
         };
 
@@ -147,7 +147,7 @@ export const deleteUser = async (req: Request, res: Response): Promise<Response>
         console.log(e);
         const response: IResponse = {
             status: 0,
-            status_txt: 'An error occured',
+            status_txt: 'Възникна грешка',
             data: []
         };
 
@@ -161,7 +161,7 @@ export const approveUser = async (req: Request, res: Response): Promise<Response
 
         let response: IResponse = {
             status: 0,
-            status_txt: 'User approved unsuccessful!',
+            status_txt: 'Успешно потвърждение на потребител!',
             data: []
         };
 
@@ -171,7 +171,7 @@ export const approveUser = async (req: Request, res: Response): Promise<Response
             const updatedUser: any = await User.findAll<User>({ where: { id: body.id }, plain: true, raw: true, attributes: {exclude: ['password']}});
             response = {
                 status: 1,
-                status_txt: 'User approved successful!',
+                status_txt: 'Успешно потвърждение на потребител!',
                 data: updatedUser
             };
         }
@@ -182,7 +182,7 @@ export const approveUser = async (req: Request, res: Response): Promise<Response
         console.log(e);
         const response: IResponse = {
             status: 0,
-            status_txt: 'An error occured',
+            status_txt: 'Възникна грешка',
             data: []
         };
 
