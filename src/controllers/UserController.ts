@@ -32,7 +32,7 @@ export const createUser = async (req: Request, res: Response): Promise<Response>
         const newUser: any = await User.create<User>(body);
         response = {
             status: 1,
-            status_txt: 'Потребителско име създадено!',
+            status_txt: 'Потребителят e създаден!',
             data: {
                 username: newUser.username
             }

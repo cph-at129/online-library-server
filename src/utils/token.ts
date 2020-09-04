@@ -17,7 +17,6 @@ export const generateToken = (user: IUser) => {
 }
 
 export const verifyToken = (req: Request, res: Response, next: any) => {
-    console.log(req.body)
     if (!req.body.token) {
         return false;
     }
@@ -33,7 +32,12 @@ export const verifyToken = (req: Request, res: Response, next: any) => {
 
 export const canAccess = (router: Router) => {
     router.use((req: Request, res:Response, next:any) => {
-        const token = verifyToken(req, res, next);
+        const passRoutes = ['/branches/getBranchesOfLibrary', '/users/create'];
+        console.log(req.path)
+        let token = verifyToken(req, res, next);
+        if (passRoutes.includes(req.path)) {
+            token = true;
+        }
         if (token) {
             next();
         } else {

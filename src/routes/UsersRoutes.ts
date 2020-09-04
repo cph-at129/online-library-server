@@ -1,6 +1,6 @@
 import { Router } from 'express';
-
 import { canAccess } from '../utils/token';
+
 import { 
     createUser,
     getUsers,
