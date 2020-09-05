@@ -10,11 +10,13 @@ import SessionConfig from './config/Session';
 import './models/Users';
 import './models/Books';
 import './models/Media';
+import './models/Calendar';
 
 // Routes'
 import AuthRoutes from './routes/AuthRoutes';
 import UsersRoutes from './routes/UsersRoutes';
 import BooksRoutes from './routes/BooksRoutes';
+import CalendarRoutes from './routes/CalendarRoutes';
 import ConstantsRoutes from './routes/ConstantsRoutes';
 
 const app = express();
@@ -42,6 +44,7 @@ app.use(session({
 app.use('/', AuthRoutes);
 app.use('/', UsersRoutes);
 app.use('/', BooksRoutes);
+app.use('/', CalendarRoutes);
 app.use('/', ConstantsRoutes);
 
 const server = app.listen(app.get('port'), () => {
