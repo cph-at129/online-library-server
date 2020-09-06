@@ -6,7 +6,8 @@ import {
     getEvents,
     getEvent,
     updateEvent,
-    deleteEvent
+    deleteEvent,
+    sendEventEmail
 } from '../controllers/CalendarController';
 
 const router = Router();
@@ -27,5 +28,8 @@ router.route('/calendar/updateEvent')
 
 router.route('/calendar/deleteEvent')
     .post(deleteEvent);
+
+router.route('/calendar/sendEventEmail')
+    .post(sendEventEmail);
 
 export default router;

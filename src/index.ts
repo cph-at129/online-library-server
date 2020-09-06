@@ -18,6 +18,7 @@ import UsersRoutes from './routes/UsersRoutes';
 import BooksRoutes from './routes/BooksRoutes';
 import CalendarRoutes from './routes/CalendarRoutes';
 import ConstantsRoutes from './routes/ConstantsRoutes';
+import ContactRoutes from './routes/ContactRoutes';
 
 const app = express();
 
@@ -46,6 +47,7 @@ app.use('/', UsersRoutes);
 app.use('/', BooksRoutes);
 app.use('/', CalendarRoutes);
 app.use('/', ConstantsRoutes);
+app.use('/', ContactRoutes);
 
 const server = app.listen(app.get('port'), () => {
     console.log('Server on port', app.get('port'));

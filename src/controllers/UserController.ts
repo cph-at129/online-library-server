@@ -53,7 +53,18 @@ export const createUser = async (req: Request, res: Response): Promise<Response>
 
 export const getUsers = async (req: Request, res: Response): Promise<Response> => {
     try {
-        const users = await User.findAll<User>({ attributes: {exclude: ['password']} });
+        const body = req.body;
+        let users = [];
+        if (body.branch_of_library) {
+            users = await User.findAll<User>({ 
+                where: { 
+                    branch_of_library: req.body.branch_of_library
+                }, 
+                attributes: {exclude: ['password']} 
+            });
+        } else {
+            users = await User.findAll<User>({attributes: {exclude: ['password']}});
+        }
         const response = {
             status: 1,
             status_txt: 'OK',

@@ -3,6 +3,9 @@ import { Request, Response } from 'express';
 import Calendar from '../models/Calendar';
 import IResponse from '../interfaces/IResponse';
 
+import nodemailer  from 'nodemailer';
+import EmailConfig from '../config/EmailConfig';
+
 export const createEvent = async (req: Request, res: Response): Promise<Response> => {
     try {
         const body = req.body;
@@ -126,6 +129,46 @@ export const deleteEvent = async (req: Request, res: Response): Promise<Response
             status: 1,
             status_txt: 'OK',
             data: book
+        };
+
+        return res.json(response);
+    }
+    catch (e) {
+        console.log(e);
+        const response: IResponse = {
+            status: 0,
+            status_txt: 'Възникна грешка!',
+            data: []
+        };
+
+        return res.json(response);
+    }
+}
+
+export const sendEventEmail = async (req: Request, res: Response): Promise<Response> => {
+    try {
+        const body = req.body;
+
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+              user: EmailConfig.email,
+              pass: EmailConfig.password
+            }
+        });
+          
+        const mailOptions = {
+            from: body.email,
+            to: EmailConfig.email,
+            subject: `Запитване за събитие - ${body.title}`,
+            text: body.text
+        };
+
+        const result = await transporter.sendMail(mailOptions);
+        const response = {
+            status: 1,
+            status_txt: 'Запитването е изпратено успешно!',
+            data: result
         };
 
         return res.json(response);
