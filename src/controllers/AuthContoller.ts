@@ -10,7 +10,7 @@ export const login = async (req: Request, res: Response): Promise<Response | voi
         let isPasswordValid = false;
         let response: IResponse = {
             status: 0,
-            status_txt: 'Login failed!',
+            status_txt: 'Нямате достъп до системата! Моля, проверете потребителското име и паролата!',
             data: {}
         };
 
