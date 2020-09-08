@@ -95,8 +95,8 @@ export const forgottenPassword = async (req: Request, res: Response): Promise<Re
         const encryptEmail = buffer.toString('base64');
           
         const mailOptions = {
-            from: body.email,
-            to: EmailConfig.email,
+            from: EmailConfig.email,
+            to: body.email,
             subject: `Смяна на парола`,
             html: `Смени паролата от този <a href="http://localhost:3000/reset-password/${encryptEmail}">линк</a>`
         };
